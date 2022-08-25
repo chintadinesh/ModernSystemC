@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Vim session
+*.vim
+
+# Cmake cache
+CMakeCache.txt
+
+# build
+build*
