@@ -35,6 +35,7 @@ target_sources( modern PRIVATE
   report.cpp
   wallclock.cpp
   checker.cpp
+  objection.cpp
   duplicator.cpp
   fpsqrt.cpp
   dut.cpp
@@ -43,6 +44,8 @@ target_sources( modern PRIVATE
   top.cpp
   main.cpp
 )
+
+set_property(TARGET modern PROPERTY CXX_STANDARD 14)
 
 # add a target to generate API documentation with Doxygen
 find_package( Doxygen REQUIRED dot )

@@ -26,8 +26,12 @@ std::map<std::string,std::string> cmdline; ///< parsed from command-line
 /**
  * @brief Entry point for SystemC
  */
-int sc_main( [[maybe_unused]]int argc, [[maybe_unused]]char* argv[] )
+int sc_main( int argc, char* argv[] )
 {
+
+  if (argc ==0) {
+      MESSAGE( "ERROR: argc is 0 " << argv);
+  }
 
   /**...........................................................................
    * Scan command-line for options
@@ -52,9 +56,9 @@ int sc_main( [[maybe_unused]]int argc, [[maybe_unused]]char* argv[] )
   if( others.length() > 0 ) cmdline[ "~" ] = others;
   if( cmdline.size() > 0 ) {
     MESSAGE( "Command-line options:" );
-    for( auto const& [option, value] : cmdline ) {
-      MESSAGE( "\n  " << option << " = " << value );
-    }
+    //for( auto const& [option, value] : cmdline ) {
+    //  MESSAGE( "\n  " << option << " = " << value );
+    //}
     MEND( ALWAYS );
   }
 

@@ -29,7 +29,7 @@ struct Coordinate
     m_data += rhs.m_data;
     return *this;
   }
-  const Coordinate& operator+( const Coordinate& rhs ) {
+  const Coordinate operator+( const Coordinate& rhs ) {
     return Coordinate(*this) += rhs;
   }
   Coordinate& operator-=( const Coordinate& rhs ) {

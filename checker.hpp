@@ -8,7 +8,7 @@
 #include "tlm.hpp"
 struct Checker_module : sc_core::sc_module
 {
-  Checker_module( sc_core::sc_module_name instance );
+  Checker_module( sc_core::sc_module_name instance ); 
   ~Checker_module( void ) = default;
   // Ports
   sc_core::sc_fifo_in<RawData_t>  rawin_port  { "rawin_port"  };
@@ -18,9 +18,9 @@ private:
   tlm::tlm_fifo<FixedPt_t>        expect_fifo { "expect_fifo", -2 };
   tlm::tlm_fifo<FixedPt_t>        result_fifo { "result_fifo", -2 };
   // Attributes
-  [[maybe_unused]]bool            anticipate_reset { false };
-  size_t                          verified_count   { 0 };
-  size_t                          mismatches       { 0 };
+  bool                            anticipate_reset ;
+  size_t                          verified_count   ;
+  size_t                          mismatches       ;
   // Processes and overrides
   void received_method( void );
   void checker_thread( void );

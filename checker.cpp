@@ -16,6 +16,9 @@ namespace {
 Checker_module::Checker_module( sc_module_name instance ) //< Constructor
 : sc_module(instance)
 {
+  anticipate_reset = false;
+  verified_count   = 0;
+  mismatches       = 0;
   SC_HAS_PROCESS( Checker_module );
   SC_METHOD( received_method );
     sensitive << result_port;
@@ -38,7 +41,7 @@ void Checker_module::checker_thread( void ) {
     RawData_t v = rawin_port->read();
     FixedPt_t expect_value = FP::fpsqrt( v.x()*v.x() + v.y()*v.y() + v.z()*v.z() );
     {
-      Objection verifying{ name() };
+      Objection verifying(name());
       // Wait for corresponding result
       actual_value = result_fifo.get();
       // Compare result to expected 
@@ -58,7 +61,8 @@ void Checker_module::checker_thread( void ) {
 
 //..............................................................................
 void Checker_module::end_of_simulation( void ) {
+    Objection obj(name());
   INFO( ALWAYS, "Verified " << std::to_string( verified_count ) << " transactions\n"
              << "- Found " << std::to_string( mismatches ) << " mismatches\n"
-             << "- Objected " << Objection::total() << " times" );
+             << "- Objected " << obj.total() << " times" );
 }
