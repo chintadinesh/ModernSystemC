@@ -39,3 +39,12 @@ CMakeCache.txt
 
 # build
 build*
+
+CMakeDoxyfile.in
+CMakeDoxygenDefaults.cmake
+CMakeFiles/
+Doxyfile.docs
+Makefile
+cmake_install.cmake
+modern
+
