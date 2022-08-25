@@ -19,7 +19,7 @@ project(      modern
   )
 
 set( default_build_type "Debug" )
-include( /apps/cmake/SystemC.cmake )
+include( apps/cmake/SystemC.cmake )
 add_compile_definitions( SC_INCLUDE_FX SC_INCLUDE_DYNAMIC_PROCESSES )
 
 add_executable( modern )
